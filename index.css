@@ -1,216 +1,268 @@
 *{
-    margin: 0;
+    margin:0;
     padding:0;
-    -webkit-user-select: none;//禁止用户选中文字
+}
+ul{
+    list-style: none;
 }
 html,body{
-    width: 100%;
     height:100%;
     overflow: hidden;
 }
 #main{
     width: 640px;
-    height: 960px;
-    overflow: hidden;
+    height: 1008px;
     position: absolute;
     left:50%;
     top:0;
     margin-left: -320px;
-    -webkit-transform-origin:top;
-    transform-origin: top;
+    -webkit-transform-origin: top;
+    overflow: hidden;
 }
-#list{height: 100%}
-#list li{
+#loading{
+    width: 100%;
+    height:100%;
+    background:#000;
+    position: absolute;
+    z-index: 10;
+
+}
+.progress{
+    margin: 0 15%;
+    width: 70%;
+    height: 40px;
+    border-radius: 10px;
+    background: #fff;
+    position: absolute;
+    top:40%;
+    overflow: hidden;
+}
+.progress span{
+    display: block;
+    width: 0;
+    height: 40px;
+    background-image: -webkit-linear-gradient(45deg,#5cb85c 25%,#74c274 50%,#5cb85c 75%,#74c274 100%);
+    background-size: 40px 40px;
+    background-repeat: repeat-x;
+    -webkit-transition :1s;
+    border-radius: 10px;
+}
+
+.phone{
     width: 100%;
     height: 100%;
-    position: absolute;
+    background-image: url(images/phoneBg.jpg);
     background-repeat: no-repeat;
-    background-size:cover;
-}
-#list li.zIndex{
-    z-index: 5;
-}
-#list li:nth-child(1){
-    background-image:url(images/b.png) ;
-}
-#list li:nth-child(2){
-    background-image:url(images/c.png) ;
-}
-#list li:nth-child(3){
-    background-image:url(images/d.png) ;
-}
-#list li:nth-child(4){
-    background-image:url(images/e.png) ;
-}
-.a1 {
+    background-size:100% 100%;
     position: absolute;
-    bottom:10%;
-    width: 100%;
-    text-align: center;
-    font-size: 30px;
-    color: #fff;
-}
-.a1 div:nth-child(odd){
-    -webkit-transform: translate(500px,0);
-    transform:translate(500px,0);
-}
-.a1 div:nth-child(even){
-    -webkit-transform: translate(-500px,0);
-    transform:translate(-500px,0);
-}
-#a1 div{
-    -webkit-transform: translate(0,0);
-    transform: translate(0,0);
-    -webkit-transition:0.5s ease-out;
-    transition:0.5s ease-out;
-}
-/*方法一:动态的添加或者删除类名(id名)来控制动画效果
-  方法二:如果是写的animation动画,可以通过设置animation-play-state值是paused停止,是running是播放
-*/
+    z-index: 9;
+    -webkit-transition: 1s;
 
-.a2 p{
-    width: 90px;
-    height: 90px;
+}
+.phoneName{
+    width: 100%;
+    height: 89px;
+    text-align: center;
+    margin-top: 60px;
+    background:url(images/logo.png) no-repeat center;
+}
+.phoneText{
+    font-size:24px;
+    color: #fff;
+    letter-spacing: 5px;
+}
+.answerOne{
+    width: 520px;
+    height: 360px;
+    background:url(images/phoneBtn.png) no-repeat;
+    position: absolute;
+    left:50%;
+    margin-left: -265px;
+    bottom:5%;
+}
+.oneTouch,.touchClick{
+    width:170px;
+    height: 170px;
+    border:3px solid #0F0;
+    position:absolute;
+    left:358px;
+    top:143px;
+    z-index: -1;
+    border-radius: 50%;
+    -webkit-animation:touchAnimate 1s ease-out infinite;
+
+}
+.touchClick{
+    -webkit-animation: none;
+    z-index:3;
+    border:0;
+    cursor: pointer;
+
+}
+@-webkit-keyframes touchAnimate {
+    0%{
+        -webkit-transform:scale(1.2)
+    }
+    100%{
+        -webkit-transform:scale(0.5);
+    }
+ }
+.answerOther{
+    width: 520px;
+    height: 659px;
+    background: url(images/phoneKey.png) no-repeat;
+    position: absolute;
+    left:50%;
+    margin-left: -265px;
+    bottom:0;
+    -webkit-transform :translate(0,659px);
+    -webkit-transition:1s;
+}
+.otherTouch{
+    width: 140px;
+    height: 140px;
+    position: absolute;
+    left: 190px;
+    bottom: 37px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.message{
+    width: 100%;
+    height: 100%;
+    background: #eaeaea;
+    position: absolute;
+    z-index: 7;
+    left:0;
+    top:0;
+
+
+}
+.message ul{
+    height: 100%;
+    -webkit-transition: 1s;
+    transition:1s;
+}
+.messageText{
+    position:absolute;
+    width: 640px;
+    height: 88px;
+    left:50%;
+    margin-left: -320px;
+    bottom:0;
+    background: url(images/messageText.png);
+    background-size: 100% 100%;
+}
+.message ul li{
+    max-width: 360px;
+    min-width: 300px;
+    padding: 25px;
+    line-height: 40px;
+    font-size: 26px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    position: relative;
+    opacity: 0;
+    -webkit-transform: translate(0,20px);
+    -webkit-transition:-webkit-transform 0.5s;
+}
+.message .left{
+    float: left;
+    border: 2px #cacaca solid;
+    background: #fff;
+    left:125px;
+}
+.message .left img{
+    position: absolute;
+    left:-100px;
+    top:0;
+}
+.message .left .arrow{
+    left: -10px;
+    top:auto
+}
+.message .right{
+    float: right;
+    right:125px;
+    background: #a2e45c;
+    border: 2px #96b474 solid;
+}
+.message .right img{
+    position: absolute;
+    right:-100px;
+    top:0;
+}
+.message .right .arrow{
+    right: -10px;
+    top:auto
+}
+.cube{
+    width: 100%;
+    height: 100%;
+    background:url(images/cubeBg.jpg) no-repeat;
+    background-size:100% 100%;
+    position: absolute;
+    z-index: 5;
+    left: 0;
+    top:0;
+    perspective: 800px;
+    -webkit-perspective: 800px;
+    cursor: pointer;
+}
+.cubeBox{
+    width:510px;
+    height: 510px;
     position: absolute;
     left:50%;
     top:50%;
-    margin-left: -45px;
-    margin-top: -45px;
+    margin-top: -255px;
+    margin-left: -255px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transform: scale(0.2) rotateX(-135deg) rotateY(-180deg);
+    -webkit-transform-origin: 255px 255px -255px;
+    opacity: 0;
+    -webkit-transition:-webkit-transform 1s;
 }
-.a2 p:nth-child(1){
-    background: url(images/c1.png) no-repeat;
+.cubeBox li{
+    width: 100%;
+    height: 100%;
+    left:0;
+    top:0;
+    position: absolute;
 }
-.a2 p:nth-child(2){
-    background: url(images/c2.png) no-repeat;
+.cubeBox li:nth-of-type(1){
+    background: url(images/cubeImg1.png);
 }
-.a2 p:nth-child(3){
-    background: url(images/c3.png) no-repeat;
+.cubeBox li:nth-of-type(2){
+    background: url(images/cubeImg2.png);
+    left:510px;
+    -webkit-transform-origin: left;
+    -webkit-transform: rotateY(90deg);
 }
-.a2 p:nth-child(4){
-    background: url(images/c4.png) no-repeat;
+.cubeBox li:nth-of-type(3){
+    background: url(images/cubeImg3.png);
+    left:-510px;
+    -webkit-transform-origin: right;
+    -webkit-transform: rotateY(-90deg);
 }
-.a2 p:nth-child(5){
-    background: url(images/c5.png) no-repeat;
+.cubeBox li:nth-of-type(4){
+    background: url(images/cubeImg4.png);
+    top:510px;
+    -webkit-transform-origin: top;
+    -webkit-transform: rotateX(-90deg);
 }
-.a2 p:nth-child(6){
-    background: url(images/c6.png) no-repeat;
-}
-#a2 p {
-    -webkit-transform: rotate(720deg);
-    transform: rotate(720deg);
-    -webkit-transition: 1s;
-    transition: 1s;
+.cubeBox li:nth-of-type(5){
+    background: url(images/cubeImg5.png);
+    top:-510px;
+    -webkit-transform-origin:bottom;
+    -webkit-transform: rotateX(90deg);
 
 }
-#a2 p:nth-child(1){
-    left: 50%;
-    top: 30%
+.cubeBox li:nth-of-type(6){
+    background: url(images/cubeImg6.png);
+    -webkit-transform: translateZ(-510px);
 }
-#a2 p:nth-child(2){
-    left: 20%;
-    top: 40%
-}
-#a2 p:nth-child(3){
-    left: 80%;
-    top: 40%
-}
-#a2 p:nth-child(4){
-    left: 20%;
-    top: 60%
-}
-#a2 p:nth-child(5){
-    left: 80%;
-    top: 60%
-}
-#a2 p:nth-child(6){
-    left: 50%;
-    top: 70%
-}
-.a3{
-    width: 460px;
-    height: 222px;
-    position: absolute;
-    left:50%;
-    margin-left: -230px;
-    bottom:10%;
-    background: url(images/d1.png) no-repeat;
-    /*transform-style: preserve-3d;*/
-    /*-webkit-transform-style: preserve-3d;*/
-    /*perspective: 800px;*/
-}
-#a3{
-    -webkit-transform: rotateY(720deg);
-    transform: rotateY(720deg);
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-}
-.a4 p{
-    width: 0;
-    height: 0;
-    border:1px solid #fff;
-    box-shadow: 0 0 10px 0 #fff;
-    word-wrap: break-word;
-    overflow: hidden;
-    color: #fff;
-    position: absolute;
-}
-.a4 p:nth-child(1){
-    left:10%;
-    top:15%;
-}
-.a4 p:nth-child(2){
-    left:53%;
-    top:18%;
-}
-.a4 p:nth-child(3){
-    left:46%;
-    top:78%;
-}
-#a4 p:nth-child(1){
-    width: 200px;
-    height: 100px;
-}
-#a4 p:nth-child(2){
-    width: 200px;
-    height: 100px;
-}
-#a4 p:nth-child(3){
-    width: 100px;
-    height: 100px;
-}
-#a4 p{
-    -webkit-transition: 1s;
-    transition: 1s;
 
-}
-#btn{
-    width:30px;
-    height: 30px;
-    background-image:url("images/normalmusic.svg");
-    background-size: contain;
-    display: none;
-    border-radius: 50%;
-    position: absolute;
-    top: 5px;right: 5px;
-    cursor: pointer;
-}
-.move{
-    -webkit-animation: rotating  1s linear 0s infinite;
-    animation: rotating  1s linear 0s infinite;
-}
-@keyframes rotating {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-@-webkit-keyframes rotating {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
-}
+
